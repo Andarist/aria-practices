@@ -326,8 +326,7 @@ Select.prototype.selectOption = function(index) {
   this.activeIndex = index;
 
   // update displayed value
-  const selected = this.options[index];
-  this.comboEl.innerHTML = selected;
+  this.comboEl.innerHTML = this.options[index];;
 
   // update aria-selected
   const options = this.el.querySelectorAll('[role=option]');
