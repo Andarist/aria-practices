@@ -177,7 +177,7 @@ Select.prototype.init = function() {
 
   // add event listeners
   this.comboEl.addEventListener('blur', this.onComboBlur.bind(this));
-  this.comboEl.addEventListener('click', () => this.updateMenuState(true));
+  this.comboEl.addEventListener('click', this.onComboClick.bind(this));
   this.comboEl.addEventListener('keydown', this.onComboKeyDown.bind(this));
 
   // create options
@@ -232,6 +232,10 @@ Select.prototype.onComboBlur = function() {
     this.selectOption(this.activeIndex);
     this.updateMenuState(false, false);
   }
+}
+
+Select.prototype.onComboClick = function() {
+  this.updateMenuState(!this.open, false);
 }
 
 Select.prototype.onComboKeyDown = function(event) {
@@ -359,6 +363,6 @@ window.addEventListener('load', function () {
   const selectEls = document.querySelectorAll('.js-select');
 
   selectEls.forEach((el) => {
-    const selectComponent = new Select(el, options);
+    new Select(el, options);
   });
 });
